@@ -196,10 +196,10 @@ Content-Type: application/json
 [test.py](test.py)
 - This api was tested with Postman and the collection of tests can be found here:
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](static/api.png)
+    ![Postman test](static/api.png)
 
 ## UML Diagram
-![UML Diagram](static/uml-diagram.png)
+![UML Diagram](static/hangtwo.drawio)
 
 ## Link
 
