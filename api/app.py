@@ -88,6 +88,11 @@ def delete_person(id):
     db.session.commit()
     return jsonify({'message': 'Person deleted successfully'})
 
+@app.errorhandler(500)
+def internal_server_error(e):
+    return jsonify(error=str(e)), 500
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
