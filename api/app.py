@@ -22,7 +22,7 @@ def home():
     return 'Welcome to 0x3Devoid HnG2-API CRUD'
 
 
-@app.route('/people', methods=['GET'])
+@app.route('/api', methods=['GET'])
 def get_people():
     people = Person.query.all()
     result = []
@@ -37,7 +37,7 @@ def get_people():
     return jsonify(result)
 
 
-@app.route("/people/<int:id>", methods=["GET"])
+@app.route("/api/<int:id>", methods=["GET"])
 def get_by_Id(id):
     person_id = Person.query.get(id)
     result = []
@@ -54,7 +54,7 @@ def get_by_Id(id):
         return jsonify(error_data)
     return jsonify(result)
 
-@app.route('/people', methods=['POST'])
+@app.route('/api', methods=['POST'])
 def create_person():
     if request.method == "POST":
         data = request.get_json()
@@ -63,7 +63,7 @@ def create_person():
         db.session.commit()
         return jsonify({"message": 'Person created succesfully'}), 201
 
-@app.route('/people/<int:id>', methods=['PUT'])
+@app.route('/api/<int:id>', methods=['PUT'])
 def update_person(id):
     person_to_update = Person.query.get(id)
     if not person_to_update:
@@ -75,7 +75,7 @@ def update_person(id):
     db.session.commit()
     return jsonify({'message': 'Person updated successfully'})
 
-@app.route("/people/<int:id>", methods=['DELETE'])
+@app.route("/api/<int:id>", methods=['DELETE'])
 def delete_person(id):
     person_to_delete = Person.query.get(id)
     if not person_to_delete:
@@ -83,10 +83,6 @@ def delete_person(id):
     db.session.delete(person_to_delete)
     db.session.commit()
     return jsonify({'message': 'Person deleted successfully'})
-
-
-
-
 
 if __name__ == '__main__':
     with app.app_context():
