@@ -75,13 +75,9 @@ The API provides the following endpoints:
 
 ```http
 POST /api
-Content-Type: application/json
+Content-Type: param
 
-{
-  "name": "John Doe",
-  "age": 22,
-  "email": "john@gmail.com"
-}
+https://hng-stagetwo-1f2d786746f2.herokuapp.com/api?name=Ole Ogboye&age=23&email=sam@gmail.com
 ```
 
 **Response:**
@@ -91,10 +87,7 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-  "name": "John Doe",
-  "id": 11,
-   "age": 22,
-  "email": "john@gmail.com"
+    "message": "Person created succesfully"
 }
 ```
 
@@ -147,9 +140,7 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-  "name": "Jane Doe",
-  "_id": "6503015360aa24dfa1c4670a",
-  "__v": 0
+    'message': 'Person updated successfully'
 }
 ```
 
