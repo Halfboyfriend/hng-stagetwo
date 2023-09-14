@@ -2,6 +2,7 @@ import requests
 import json
 
 # CREATE A NEW USER
+API_URL = 'https://hng-stagetwo-1f2d786746f2.herokuapp.com/api'
 data = {
     'name': 'New User',
     'age': 27,
@@ -12,7 +13,7 @@ headers = {'Content-Type': 'application/json'}
 
 json_data = json.dumps(data)
 
-response = requests.post('http://127.0.0.1:5000/people', data=json_data, headers=headers)
+response = requests.post(API_URL, data=json_data, headers=headers)
 if response.status_code == 201:
     print('Person created successfully, please reload data base')
 else:
@@ -20,7 +21,7 @@ else:
 
 
 # DELETE A USER BY ID
-deleted_user = requests.delete('http://127.0.0.1:5000/people/6')
+deleted_user = requests.delete(f'{API_URL}/6')
 if deleted_user.status_code == 201:
     print('User deleted successfully')
 else:
@@ -35,7 +36,7 @@ data_to_update = {
 
 json_data_updated = json.dumps(data_to_update)
 
-updated_user = requests.put('http://127.0.0.1:5000/people/10', data=json_data_updated, headers=headers)
+updated_user = requests.put(f'{API_URL}/10', data=json_data_updated, headers=headers)
 if updated_user.status_code == 201:
     print('User deleted successfully')
 else:
@@ -43,6 +44,6 @@ else:
 
 
 # LOAD ALL CURRENT USERS
-get_response = requests.get('http://127.0.0.1:5000/people')
+get_response = requests.get(API_URL)
 
 print(get_response.text)

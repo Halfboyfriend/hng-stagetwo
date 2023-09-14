@@ -1,5 +1,7 @@
 # hng-stagetwo
-## https://hng-stagetwo-agp4b7p37-halfboyfriend.vercel.app/
+
+
+## https://hng-stagetwo-1f2d786746f2.herokuapp.com/api
 
 # Flask App Rest API with Sqlalchemy db
 
@@ -8,70 +10,50 @@ This is a simple Flask app Rest API that interacts with a Sqlalchemy database us
 ## Table of Contents
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Configuration](#configuration)
 - [Usage](#usage)
 - [Documentation](#documentation)
 - [Error Handling](#error-handling)
 - [Testing](#testing)
 - [UML Diagram](#uml-diagram)
-- [License](#license)
+- [Live Link](#Link)
 
 ## Prerequisites
 
 Before you begin, make sure you have the following installed on your system:
 
-- [Node.js](https://nodejs.org/) (with npm)
-- [A MongoDB server](https://www.mongodb.com/) (running locally or accessible via a URI)
+- [Node.js](https://python.org/) (pip)
 
 ## Installation
 
 1 . Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/Felixdiamond/HNGx_Stage_Two.git
+   git clone https://github.com/Halfboyfriend/hng-stagetwo.git
    ```
 
 2 . Change into the project directory:
 
    ```bash
-   cd HNGx_Stage_Two
+   cd hng-stagetwo
    ```
 
 3 . Install the required npm packages:
 
    ```bash
-   npm install
+  pip install -r requirements.txt
    ```
 
-## Configuration
-
-1 . Create a `.env` file in the root directory of the project and add the following environment variables:
-
-   ```env
-   PORT=MY_PORT
-   CONNECTION_STRING=CONN_STRING
-   ```
-
-   Make sure to replace `CONN_STRING` with the connection URI gotten from mongodb. The `PORT` variable is optional and will run at `3000` by default.
 
 ## Usage
 
 To start the API server, run the following command:
 
 ```bash
-npm start
+python main.py
 ```
 
-To start in developer mode, run:
 
-```bash
-npm run dev
-```
-
-The server will start on the port specified in your `.env` file (default: 3000). You should see a message in the console indicating that the server is running.
-
-
-Now visit the Base URL: http://localhost:3000 or whatever port is showed by your server.
+Now visit the Base URL: http://127.0.0.1:5000/ or whatever port is showed by your server.
 
 
 ## API Endpoints
@@ -97,7 +79,9 @@ POST /api
 Content-Type: application/json
 
 {
-  "name": "John Doe"
+  "name": "John Doe",
+  "age": 22,
+  "email": "john@gmail.com"
 }
 ```
 
@@ -109,8 +93,9 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "_id": "6503015360aa24dfa1c4670a",
-  "__v": 0
+  "id": 11,
+   "age": 22,
+  "email": "john@gmail.com"
 }
 ```
 
@@ -132,8 +117,9 @@ Content-Type: application/json
 
 {
   "name": "John Doe",
-  "_id": "6503015360aa24dfa1c4670a",
-  "__v": 0
+  "id": (specified id),
+   "age": 22,
+  "email": "john@gmail.com"
 }
 ```
 
@@ -148,7 +134,10 @@ PUT /api/{id}
 Content-Type: application/json
 
 {
-  "name": "Jane Doe"
+  "name": "John Doe",
+  "id": 11,
+   "age": 22,
+  "email": "john@gmail.com"
 }
 ```
 
@@ -182,13 +171,13 @@ Status: 200 OK
 Content-Type: application/json
 
 {
-    "message": "John Doe David removed successfully"
+    "message": "Person deleted successfully"
 }
 ```
 
 ## Documentation
 
-Detailed documentation of the API can be at [DOCUMENTATION.md](DOCUMENTATION.md)
+Detailed documentation of the API can be at [README.md](README.md)
 
 ## Error Handling
 
@@ -199,15 +188,20 @@ Status: {Error Code}
 Content-Type: application/json
 
 {
-    "error": "Error Message"
+    'message': 'Person doesnt exist'
 }
 ```
 
 ## Testing
+- This api was tested using python script 
+[test.py](test.py)
 - This api was tested with Postman and the collection of tests can be found here:
 
-    [![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/27281373-704cd9f0-8cf5-49cc-9f85-f3e4acb17e45?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D27281373-704cd9f0-8cf5-49cc-9f85-f3e4acb17e45%26entityType%3Dcollection%26workspaceId%3Dfab1b95b-6d58-4b2e-ad4b-d0c0aad72f83)
+    [![Run in Postman](https://run.pstmn.io/button.svg)](static/api.png)
 
 ## UML Diagram
 ![UML Diagram](static/uml-diagram.png)
 
+## Link
+
+![Live URL](https://hng-stagetwo-1f2d786746f2.herokuapp.com/api)
