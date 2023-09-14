@@ -1,15 +1,12 @@
 import requests
 import json
 
+API_URL = 'https://hng-stagetwo-agp4b7p37-halfboyfriend.vercel.app/api'
 # CREATE A NEW USER
-API_URL = 'https://hng-stagetwo-1f2d786746f2.herokuapp.com/api'
 data = {
-    'name': 'New User',
-    'age': 27,
-    'email': 'user@example.com'
+    'name': 'Ayomide'
 }
 headers = {'Content-Type': 'application/json'}
-
 
 json_data = json.dumps(data)
 
@@ -21,6 +18,7 @@ else:
 
 
 # DELETE A USER BY ID
+
 deleted_user = requests.delete(f'{API_URL}/6')
 if deleted_user.status_code == 201:
     print('User deleted successfully')
@@ -29,21 +27,18 @@ else:
 
 # UPDATE CURRENT USER BY ID
 data_to_update = {
-    'name': 'Oluwatuyi Ojo',
-    'age': 20,
-    'email': 'tuyi@example.com'
+    'name': 'Idris',
 }
 
 json_data_updated = json.dumps(data_to_update)
 
-updated_user = requests.put(f'{API_URL}/10', data=json_data_updated, headers=headers)
+updated_user = requests.put(f'{API_URL}/11', data=json_data_updated, headers=headers)
 if updated_user.status_code == 201:
-    print('User deleted successfully')
+    print('User updated successfully')
 else:
     print('Error:', updated_user.status_code, updated_user.text)
 
 
-# LOAD ALL CURRENT USERS
-get_response = requests.get(API_URL)
+get_response = requests.get(f'{API_URL}/11')
 
 print(get_response.text)

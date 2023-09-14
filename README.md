@@ -75,9 +75,11 @@ The API provides the following endpoints:
 
 ```http
 POST /api
-Content-Type: param
+Content-Type: application/json
 
-https://hng-stagetwo-1f2d786746f2.herokuapp.com/api?name=Ole Ogboye&age=23&email=sam@gmail.com
+{
+    'name': 'Ayomide'
+}
 ```
 
 **Response:**

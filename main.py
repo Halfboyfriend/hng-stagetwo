@@ -54,25 +54,35 @@ def get_by_Id(id):
         return jsonify(error_data)
     return jsonify(result)
 
+
 @app.route('/api', methods=['POST'])
 def create_person():
-    if request.method == "POST":
-        name = request.args.get('name')
-        age = request.args.get('age')
-        email = request.args.get('email')
-        new_person = Person(name=name, age=age, email=email)
+    data = request.get_json()
+    age = 20
+    if not data:
+        return jsonify({'error': 'Request data is empty'}), 400
+
+    try:
+       
+        email = f'{data["name"]}@gmail.com'
+        new_person = Person(name=data['name'], age=age, email=email)
         db.session.add(new_person)
         db.session.commit()
-        return jsonify({"message": 'Person created succesfully'}), 201
+        age += 5
+        return jsonify({"message": 'Person created successfully'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': 'Failed to create person', 'details': str(e)}), 500
 
 @app.route('/api/<int:id>', methods=['PUT'])
 def update_person(id):
     person_to_update = Person.query.get(id)
     if not person_to_update:
         return jsonify({'message': 'Person doesnt exist'})
-    name = request.args.get('name')
-    age = request.args.get('age')
-    email = request.args.get('email')
+    data = request.get_json()
+    name = data['name']
+    age = 22
+    email = f'{data["name"]}@gmail.com'
     person_to_update.name = name
     person_to_update.age = age
     person_to_update.email = email
