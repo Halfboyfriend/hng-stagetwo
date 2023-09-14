@@ -1,6 +1,5 @@
 # hng-stagetwo
 
-
 ## https://hng-stagetwo-1f2d786746f2.herokuapp.com/api
 
 # Flask App Rest API with Sqlalchemy db
