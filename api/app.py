@@ -57,8 +57,10 @@ def get_by_Id(id):
 @app.route('/api', methods=['POST'])
 def create_person():
     if request.method == "POST":
-        data = request.get_json()
-        new_person = Person(name=data['name'], age=data['age'], email=data['email'])
+        name = request.args.get('name')
+        age = request.args.get('age')
+        email = request.args.get('email')
+        new_person = Person(name=name, age=age, email=email)
         db.session.add(new_person)
         db.session.commit()
         return jsonify({"message": 'Person created succesfully'}), 201
@@ -68,10 +70,12 @@ def update_person(id):
     person_to_update = Person.query.get(id)
     if not person_to_update:
         return jsonify({'message': 'Person doesnt exist'})
-    data = request.get_json()
-    person_to_update.name = data['name']
-    person_to_update.age = data['age']
-    person_to_update.email = data['email']
+    name = request.args.get('name')
+    age = request.args.get('age')
+    email = request.args.get('email')
+    person_to_update.name = name
+    person_to_update.age = age
+    person_to_update.email = email
     db.session.commit()
     return jsonify({'message': 'Person updated successfully'})
 
